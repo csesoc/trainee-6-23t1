@@ -40,9 +40,9 @@ export interface Profile {
     email: string,
     firstName: string,
     lastName: string,
-    interests: Interests,
-    gender: Gender,
-    preferences: Gender,
-    socials: Socials,
-    availabilities: Availabilities
+    interests?: Interests,
+    gender?: Gender,
+    preferences?: Gender,
+    socials?: Socials,
+    availabilities?: Availabilities
 }

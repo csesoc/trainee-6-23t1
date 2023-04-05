@@ -1,7 +1,7 @@
 // Setup database
 import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
-import { Profile } from "./interfaces";
+import { Profile } from "../interfaces";
 
 dotenv.config();
 

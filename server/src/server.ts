@@ -1,5 +1,5 @@
 import express, { application } from "express";
-import { client } from "./database";
+import { client, comp6969Db } from "./db/database";
 import dotenv from "dotenv";
 
 // express setup
