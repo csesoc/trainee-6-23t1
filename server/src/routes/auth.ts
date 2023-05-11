@@ -1,7 +1,7 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import { profile } from "../database.js";
+import { profile } from "../db/database";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -38,39 +38,34 @@ router.post("/register", async (req, res) => {
   // Get salt
   let salt = await bcrypt.genSalt(15);
 
-  // Initialise hash object
-  let hash = await bcrypt.hash("rizzler", salt);
-
-  // Combine password into hash
-  hash.update(password);
-
-  // Convert hash object to string
-  let hashed = hash.digest("hex");
+  // Hash password with salt
+  let hash = await bcrypt.hash(password, salt);
 
   // Create a token
-  const token = jwt.sign(
-    { email: email }, 
-    process.env.TOKEN_KEY, {
-    expiresIn: "30m",
-  });
+  if (process.env.TOKEN_KEY !== undefined) {
+    const token = jwt.sign(
+      { email: email }, 
+      process.env.TOKEN_KEY, 
+      { expiresIn: "30m" }
+    );
 
-  let user = {
-    email: email,
-    password: hashed,
-    token: token,
-    firstName: firstName,
-    lastName: lastName,
-    interests: {},
-    gender: {},
-    preferences: {},
-    socials: {},
-    availabiilty: {},
-  };
+    let user = {
+      email: email,
+      password: hash,
+      token: token,
+      firstName: firstName,
+      lastName: lastName,
+    };
+  
+    await profile.insertOne(user);
 
-  await profile.insertOne(user);
+    return res.status(200).send({
+      message: `${email} has been successfully registered!`,
+    });
+  }
 
-  return res.status(200).send({
-    message: `${email} has been successfully registered!`,
+  return res.status(400).send({
+    message: `Could not register ${email}!`,
   });
 });
 
@@ -97,28 +92,35 @@ router.post("/login", async (req, res) => {
   }
 
   // Compare password with database
-  let valid = await bcrypt.compare(dbUser.pasword, password);
+  let valid = await bcrypt.compare(password, dbUser.password);
+
   if (!valid) {
     return res.status(400).send({ error: "invalid password!" });
   }
 
   // Create token and update the database
-  const token = jwt.sign(
-    { email: email }, 
-    process.env.TOKEN_KEY, {
-    expiresIn: "30m",
-  });
-  
-  await profile.updateOne(
-    { email: email },
-    {
-      $set: {
-        token: token,
-      },
-    }
-  );
+  if (process.env.TOKEN_KEY !== undefined) {
+    const token = jwt.sign(
+      { email: email }, 
+      process.env.TOKEN_KEY.toString(), 
+      { expiresIn: "30m",
+    });
+    
+    await profile.updateOne(
+      { email: email },
+      {
+        $set: {
+          token: token,
+        },
+      }
+    );
 
-  return res.status(200).send({ message: `${email} has been logged in!` });
+    return res.status(200).send({ message: `${email} has been logged in!` });
+  }
+
+  return res.status(400).send({
+    message: `Could not login to ${email}!`,
+  });
 });
 
 export { router as default };
