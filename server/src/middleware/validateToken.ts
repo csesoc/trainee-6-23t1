@@ -25,14 +25,9 @@ const validateToken = async (req: Request, res: Response, next: NextFunction) =>
       if (err) {
         return res.status(401).send({ error: "Invalid token" });
       }
+      console.log("Token is valid!");
       next();
     });
-  }
-  
-  if (!token) {
-    return res.status(401).send({ error: "Invalid token" });
-  } else {
-    console.log("Token is valid!");
   }
 }
 
