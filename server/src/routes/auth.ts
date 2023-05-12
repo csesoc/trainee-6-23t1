@@ -59,15 +59,19 @@ router.post("/register", async (req, res) => {
   
     await profile.insertOne(user);
 
-    return res.status(200).send({
-      message: `${email} has been successfully registered!`,
+    res.cookie("jwt", token, {
+      maxAge: 24 * 60 * 60 * 1000,
+      httpOnly: true,
+      sameSite: "none",
+      secure: true,
     });
+
+    return res.status(200).send({ message: `${email} has been successfully registered!` });
   }
 
-  return res.status(400).send({
-    message: `Could not register ${email}!`,
-  });
+  return res.status(400).send({ message: `Could not register ${email}!` });
 });
+
 
 /*
 Given user login details, sends a cookie with token
@@ -114,13 +118,48 @@ router.post("/login", async (req, res) => {
         },
       }
     );
+    
+    res.cookie("jwt", token, {
+      maxAge: 24 * 60 * 60 * 1000,
+      httpOnly: true,
+      sameSite: "none",
+      secure: true,
+    });
 
     return res.status(200).send({ message: `${email} has been logged in!` });
   }
 
-  return res.status(400).send({
-    message: `Could not login to ${email}!`,
-  });
+  return res.status(400).send({ message: `Could not login to ${email}!` });
+});
+
+
+/*
+Logout of user by deleting the token.
+*/
+router.delete("/logout", async (req, res) => {
+  const cookies = req.cookies;
+  if (!cookies?.jwt) {
+    return res.status(204).send({ message: `No content` });
+  }
+
+  const token = cookies.jwt;
+  let user = profile.findOne({ token: token });
+  if (!user) {
+    res.clearCookie("jwt", { httpOnly: true, sameSite: "none", secure: true }); 
+    return res.status(204).send({ message: `No content` });;
+  }
+
+  await profile.updateOne(
+    { token: token },
+    {
+      $set: {
+        token: "",
+      },
+    }
+  );
+
+  res.clearCookie("jwt", { httpOnly: true, sameSite: "none", secure: true });
+  return res.status(200).send({ message: `Successfully logged out`});
 });
 
 export { router as default };

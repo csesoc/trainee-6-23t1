@@ -20,11 +20,11 @@ const genders = {
 }
 
 const socials = {
-  phone: { bsonType: "number" },
+  phone: { bsonType: "string" },
   instagram: { bsonType: "string" },
   facebook: { bsonType: "string" },
   discord: { bsonType: "string" },
-  other: { bsonType: "string" }
+  // other: { bsonType: "string" }
 }
 
 // set max arr length and constrain it to bool only values
@@ -44,7 +44,7 @@ const setupSchema = (async () => {
     validator: {
       $jsonSchema: {
         bsonType: "object",
-        required: ["email", "password"],       // set required fields, may need to update later
+        // required: ["email", "password"],       // set required fields, may need to update later
         properties: {
           _id: { 
             bsonType: "objectId" 
@@ -100,6 +100,6 @@ const setupSchema = (async () => {
   console.log(result);
 })
 
-setupSchema();
+// setupSchema();
 
 export { setupSchema };

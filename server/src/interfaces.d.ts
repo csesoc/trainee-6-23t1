@@ -18,11 +18,11 @@ interface Gender {
 }
 
 interface Socials {
-    phone: number,
-    instagram: string,
-    facebook: string,
-    discord: string,
-    other: string
+    phone?: string,
+    instagram?: string,
+    facebook?: string,
+    discord?: string
+    // other: string
 }
 
 // maybe switch to just an array of arrays where arr[0] = monday etc
