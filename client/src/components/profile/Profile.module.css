@@ -1,0 +1,40 @@
+.container {
+    padding: 5vh 5vw;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+
+/* QUEUE */
+.play {
+    position: fixed;
+    right: 5px;
+    font-size: 2em;
+}
+
+
+/* IMAGE */
+.imgContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    overflow-y: hidden;
+}
+
+.img {
+    min-height: 80vh;
+    max-height: 600px;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+/* DETAILS */
+.name {
+    font-size: 5em;
+}
+
+.genders {
+    font-size: 3em;
+}
