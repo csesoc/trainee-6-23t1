@@ -38,3 +38,10 @@
 .genders {
     font-size: 3em;
 }
+
+
+/* INTERESTS */
+.interestsContainer {
+    display: flex;
+    gap: 1em;
+}
