@@ -8,9 +8,15 @@ const Profile = () => {
 
   return (
     <>
+      {/* MATCHMAKING */}
       <GrGamepad className={styles.play}/>
+
       <Grid container className={styles.container}>
+
+        {/* IMAGE - Left */}
         <Img/>
+
+        {/* DETAILS - Right */}
         <Details/>
       </Grid>
     </>

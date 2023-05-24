@@ -5,11 +5,12 @@
 }
 
 
-/* QUEUE */
+/* MATCHMAKING */
 .play {
     position: fixed;
     right: 5px;
     font-size: 2em;
+    cursor: pointer;
 }
 
 
@@ -35,6 +36,16 @@
     font-size: 5em;
 }
 
+.bar {
+    background: linear-gradient(to left, #f7ba2b 0%, #ea5358 100%);
+    background-clip: content-box;
+    border-radius: 20px;
+    height: 20px;
+    margin: 5vh 0;
+}
+
+
+/* GENDERS */
 .genders {
     font-size: 3em;
 }
