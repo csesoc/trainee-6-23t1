@@ -1,5 +1,5 @@
 import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
+import timeGridPlugin from '@fullcalendar/timegrid'
 import { Grid } from '@mui/material'
 
 const Calendar = () => {
@@ -20,9 +20,14 @@ const Calendar = () => {
   return (
     <Grid item xs={12}>
       <FullCalendar
-        plugins={[dayGridPlugin]}
-        initialView='dayGridWeek'
-        weekends={false}
+        plugins={[timeGridPlugin]}
+        initialView='timeGridWeek'
+        weekends={true}
+        firstDay={1}
+        headerToolbar={false}
+        allDaySlot={false}
+        dayHeaderFormat={{ weekday: 'long' }}
+        slotDuration='01:00:00'
         events={events}
         eventContent={renderEventContent}
       />
