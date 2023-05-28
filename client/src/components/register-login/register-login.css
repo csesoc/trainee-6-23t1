@@ -80,17 +80,17 @@ input:hover {
 }
 
 button {
-  background-color: #F9E1BF;
+  background-color: #d6d6d6a0 !important;
   color: black;
-  border: 2px solid black;
+  border: 2px solid #d6d6d674 !important;
   padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #080500;
-  color: #FFFFFF;
+  background-color: #080500 !important;
+  color: #FFFFFF !important;
 }
 
 .button-selected {
