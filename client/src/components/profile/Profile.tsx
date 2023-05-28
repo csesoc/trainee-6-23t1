@@ -3,21 +3,17 @@ import Img from "./Img"
 import styles from './Profile.module.css'
 import Details from "./Details"
 import { GrGamepad } from "react-icons/gr";
+import Calendar from "./Calendar";
 
 const Profile = () => {
 
   return (
     <>
-      {/* MATCHMAKING */}
       <GrGamepad className={styles.play}/>
-
-      <Grid container className={styles.container}>
-
-        {/* IMAGE - Left */}
+      <Grid container className={styles.container} spacing={5}>
         <Img/>
-
-        {/* DETAILS - Right */}
         <Details/>
+        <Calendar/>
       </Grid>
     </>
   )

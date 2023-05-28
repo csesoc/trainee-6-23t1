@@ -2,7 +2,6 @@ import { Grid } from '@mui/material'
 import styles from './Profile.module.css'
 import Genders from './Genders'
 import Interests from './Interests'
-import Calendar from './Calendar'
 
 
 const Details = () => {
@@ -17,7 +16,6 @@ const Details = () => {
         <Grid item xs={12}><div className={styles.bar}/></Grid>
         <Genders/>
         <Interests/>
-        <Calendar/>
 
       </Grid>
     </Grid>
