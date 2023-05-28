@@ -1,6 +1,5 @@
 import express from "express";
 import { profile } from "../db/database";
-import { ObjectId } from "mongodb";
 import dotenv from "dotenv";
 dotenv.config();
 import { validateToken } from "../middleware/validateToken";
@@ -25,10 +24,10 @@ Updates interests fields to the database with params:
 }
 */
 router.post("/interests", async (req, res) => {
-  const userId = new ObjectId(req.body._id);
-  const user = await profile.findOne({ _id: userId });
+  const token = req.cookies.jwt;
+  const user = await profile.findOne({ token: token });
   if (!user) {
-      return res.status(400).send({ error: "user id invalid" });
+      return res.status(400).send({ error: "token invalid" });
   }
 
   const interests = req.body.interests;
@@ -40,7 +39,7 @@ router.post("/interests", async (req, res) => {
   }
   
   await profile.updateOne(
-    { _id: userId },
+    { token: token },
     {
       $set: {
         interests: {
@@ -73,10 +72,10 @@ Updates genders fields to the database with params:
 }
 */
 router.post("/genders", async (req, res) => {
-  const userId = new ObjectId(req.body._id);
-  const user = await profile.findOne({ _id: userId });
+  const token = req.cookies.jwt;
+  const user = await profile.findOne({ token: token });
   if (!user) {
-      return res.status(400).send({ error: "user id invalid" });
+      return res.status(400).send({ error: "token invalid" });
   }
 
   const genders = req.body.genders;
@@ -86,7 +85,7 @@ router.post("/genders", async (req, res) => {
   }
   
   await profile.updateOne(
-    { _id: userId },
+    { token: token },
     {
       $set: {
         genders: {
@@ -114,10 +113,10 @@ Updates preferences fields to the database with params:
 }
 */
 router.post("/preferences", async (req, res) => {
-  const userId = new ObjectId(req.body._id);
-  const user = await profile.findOne({ _id: userId });
+  const token = req.cookies.jwt;
+  const user = await profile.findOne({ token: token });
   if (!user) {
-      return res.status(400).send({ error: "user id invalid" });
+      return res.status(400).send({ error: "token invalid" });
   }
 
   const genders = req.body.preferences;
@@ -127,7 +126,7 @@ router.post("/preferences", async (req, res) => {
   }
   
   await profile.updateOne(
-    { _id: userId },
+    { token: token },
     {
       $set: {
         preferences: {
@@ -156,38 +155,38 @@ Updates socials fields to the database with params:
 }
 */
 router.post("/socials", async (req, res) => {
-  const userId = new ObjectId(req.body._id);
-  const user = await profile.findOne({ _id: userId });
+  const token = req.cookies.jwt;
+  const user = await profile.findOne({ token: token });
   if (!user) {
-      return res.status(400).send({ error: "user id invalid" });
+      return res.status(400).send({ error: "token invalid" });
   }
 
   const socials = req.body.socials;
 
   if (socials.phone !== undefined) {
     await profile.updateOne(
-      { _id: userId },
+      { token: token },
       { $set: { "socials.phone": socials.phone } }
     );
   }
 
   if (socials.instagram !== undefined) {
     await profile.updateOne(
-      { _id: userId },
+      { token: token },
       { $set: { "socials.instagram": socials.instagram } }
     );
   }
 
   if (socials.facebook !== undefined) {
     await profile.updateOne(
-      { _id: userId },
+      { token: token },
       { $set: { "socials.facebook": socials.facebook } }
     );
   }
 
   if (socials.discord !== undefined) {
     await profile.updateOne(
-      { _id: userId },
+      { token: token },
       { $set: { "socials.discord": socials.discord } }
     );
   }
@@ -212,10 +211,10 @@ Updates availabilities fields to the database with params:
 }
 */
 router.post("/availabilities", async (req, res) => {
-  const userId = new ObjectId(req.body._id);
-  const user = await profile.findOne({ _id: userId });
+  const token = req.cookies.jwt;
+  const user = await profile.findOne({ token: token });
   if (!user) {
-      return res.status(400).send({ error: "user id invalid" });
+      return res.status(400).send({ error: "token invalid" });
   }
 
   const availabilities = req.body.availabilities;
@@ -227,7 +226,7 @@ router.post("/availabilities", async (req, res) => {
   }
   
   await profile.updateOne(
-    { _id: userId },
+    { token: token },
     {
       $set: {
         availabilities: {
