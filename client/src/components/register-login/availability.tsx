@@ -1,5 +1,6 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Select from 'react-select';
 import './register-login.css';
 
 interface Availability {
@@ -12,31 +13,41 @@ interface Availability {
   sunday: boolean[];
 }
 
+const timeOptions = Array.from({ length: 24 }, (_, i) => ({ label: `${i}:00 - ${i + 1}:00`, value: i }));
+
 const AvailabilityPage: React.FC = () => {
   const navigate = useNavigate();
   const [availabilities, setAvailabilities] = useState<Availability>({
-    monday: Array(24).fill(false),
-    tuesday: Array(24).fill(false),
-    wednesday: Array(24).fill(false),
-    thursday: Array(24).fill(false),
-    friday: Array(24).fill(false),
-    saturday: Array(24).fill(false),
-    sunday: Array(24).fill(false),
+    monday: [],
+    tuesday: [],
+    wednesday: [],
+    thursday: [],
+    friday: [],
+    saturday: [],
+    sunday: [],
   });
 
-  const handleToggle = (day: keyof Availability, index: number) => {
-    setAvailabilities((prevAvailabilities) => {
-      const updatedDay = [...prevAvailabilities[day]];
-      updatedDay[index] = !updatedDay[index];
-      return {
-        ...prevAvailabilities,
-        [day]: updatedDay,
-      };
-    });
+  const handleChange = (selectedOptions: any, { name }: { name?: string }) => {
+    if (name) {
+      const mutableSelectedOptions = selectedOptions as any[];
+      setAvailabilities({ ...availabilities, [name.toLowerCase()]: mutableSelectedOptions.map((option: any) => option.value) });
+    }
   };
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
+  const handleReset = (day: string) => {
+    setAvailabilities({ ...availabilities, [day.toLowerCase()]: [] });
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const boolAvailabilities = Object.fromEntries(
+      Object.entries(availabilities).map(([day, values]) => {
+        const hours = Array(24).fill(false);
+        values.forEach((value: number) => (hours[value] = true));
+        return [day.toLowerCase(), hours];
+      })
+    );
 
     try {
       const response = await fetch(import.meta.env.VITE_BACKEND_URL + '/profile/availabilities', {
@@ -44,7 +55,7 @@ const AvailabilityPage: React.FC = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ availabilities: availabilities }),
+        body: JSON.stringify({ availabilities: boolAvailabilities }),
         credentials: 'include',
       });
 
@@ -52,7 +63,7 @@ const AvailabilityPage: React.FC = () => {
 
       if (response.ok) {
         console.log(data.message); // Success message
-        navigate("/social");
+        navigate('/social');
       } else {
         console.error(data.error); // Error message
       }
@@ -71,79 +82,39 @@ const AvailabilityPage: React.FC = () => {
         <h2>When are you available?</h2>
         <form onSubmit={handleSubmit}>
           <table className="availability-table">
-            <thead>
-              <tr>
-                <th>Time</th>
-                <th>M</th>
-                <th>T</th>
-                <th>W</th>
-                <th>T</th>
-                <th>F</th>
-                <th>S</th>
-                <th>S</th>
-              </tr>
-            </thead>
             <tbody>
-              {[...Array(24)].map((_, hour) => (
-                <tr key={hour}>
-                  <td>{`${hour}:00 - ${hour + 1}:00`}</td>
+              {Object.entries(availabilities).map(([day, values]) => (
+                <tr key={day} className="availability-row">
+                  <td>{day}</td>
                   <td>
-                    <button
-                      className={`availability-button ${availabilities.monday[hour] ? 'button-selected' : ''}`}
-                      onClick={() => handleToggle('monday', hour)}
+                    <Select
+                      name={day}
+                      isMulti
+                      value={values.map((value: number) => ({ label: `${value}:00 - ${value + 1}:00`, value }))}
+                      onChange={handleChange}
+                      options={timeOptions}
+                      menuPlacement="auto"
+                      closeMenuOnSelect={false}
+                      hideSelectedOptions
+                      isSearchable={false}
+                      controlShouldRenderValue={false}
+                      isClearable={false}
+                      backspaceRemovesValue={false}
+                      className="select-container"
                     />
                   </td>
                   <td>
-                    <button
-                      className={`availability-button ${availabilities.tuesday[hour] ? 'button-selected' : ''}`}
-                      onClick={() => handleToggle('tuesday', hour)}
-                    />
-                  </td>
-                  <td>
-                    <button
-                      className={`availability-button ${availabilities.wednesday[hour] ? 'button-selected' : ''}`}
-                      onClick={() => handleToggle('wednesday', hour)}
-                    />
-                  </td>
-                  <td>
-                    <button
-                      className={`availability-button ${availabilities.thursday[hour] ? 'button-selected' : ''}`}
-                      onClick={() => handleToggle('thursday', hour)}
-                    />
-                  </td>
-                  <td>
-                    <button
-                      className={`availability-button ${availabilities.friday[hour] ? 'button-selected' : ''}`}
-                      onClick={() => handleToggle('friday', hour)}
-                    />
-                  </td>
-                  <td>
-                    <button
-                      className={`availability-button ${availabilities.saturday[hour] ? 'button-selected' : ''}`}
-                      onClick={() => handleToggle('saturday', hour)}
-                    />
-                  </td>
-                  <td>
-                    <button
-                      className={`availability-button ${availabilities.sunday[hour] ? 'button-selected' : ''}`}
-                      onClick={() => handleToggle('sunday', hour)}
-                    />
+                    <button type="button" onClick={() => handleReset(day)}>Reset</button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-
-          <br />
           <div className="button-container">
-            <div className="back-button">
-              <button type="button" onClick={handleBack}>
-                Back
-              </button>
-            </div>
-            <div className="next-button">
-              <button type="submit">Next</button>
-            </div>
+            <button type="button" onClick={handleBack}>
+              Back
+            </button>
+            <button type="submit">Next</button>
           </div>
         </form>
       </section>

@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './register-login.css';
 
 const GenderPage: React.FC = () => {
   const navigate = useNavigate();
