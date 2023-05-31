@@ -1,3 +1,13 @@
 :root {
     font-family: 'Roboto';
 }
+
+
+/* CALENDAR */
+.fc-day-today {
+    background-color: inherit !important;
+}
+
+.fc-timegrid-col-events {
+    margin: 0 !important;
+}

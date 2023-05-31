@@ -4,12 +4,25 @@
     box-sizing: border-box;
 }
 
+.dropdown {
+    height: 32px;
+    font-size: 0.8175rem;
+}
 
-/* MATCHMAKING */
-.play {
+
+/* OPTIONS */
+.options {
     position: fixed;
+    top: 5px;
     right: 5px;
     font-size: 2em;
+
+    display: flex;
+    gap: 10px;
+    z-index: 5;
+}
+
+.icon {
     cursor: pointer;
 }
 
@@ -47,12 +60,34 @@
 
 /* GENDERS */
 .genders {
+    display: flex;
+    align-items: center;
     font-size: 3em;
 }
 
 
 /* INTERESTS */
-.interestsContainer {
+.chips {
     display: flex;
+    flex-wrap: wrap;
     gap: 1em;
+    width: 100%;
+}
+
+.menuContainer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+/* CALENDAR */
+.buttonContainer {
+    display: flex;
+    gap: 1.5em;
+}
+
+.button {
+    background: linear-gradient(to left, #f7ba2b 0%, #ea5358 100%);
+    color: white;
+    min-width: 100px;
 }
