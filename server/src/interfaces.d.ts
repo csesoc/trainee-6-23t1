@@ -43,7 +43,7 @@ export interface Profile {
     firstName: string,
     lastName: string,
     interests?: Interests,
-    gender?: Gender,
+    genders?: Gender,
     preferences?: Gender,
     socials?: Socials,
     availabilities?: Availabilities

@@ -7,6 +7,7 @@ import PrefPage from './components/register-login/preferences';
 import AvailabilityPage from './components/register-login/availability';
 import Socials from './components/register-login/socials';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Profile from './components/profile/Profile';
 
 function App(): JSX.Element {
   return (
@@ -19,6 +20,7 @@ function App(): JSX.Element {
         <Route path="/interest" element={<InterestPage />} />
         <Route path="/availability" element={<AvailabilityPage />} />
         <Route path="/social" element={<Socials />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
   );

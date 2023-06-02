@@ -1,0 +1,93 @@
+.container {
+    padding: 5vh 5vw;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.dropdown {
+    height: 32px;
+    font-size: 0.8175rem;
+}
+
+
+/* OPTIONS */
+.options {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    font-size: 2em;
+
+    display: flex;
+    gap: 10px;
+    z-index: 5;
+}
+
+.icon {
+    cursor: pointer;
+}
+
+
+/* IMAGE */
+.imgContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    overflow-y: hidden;
+}
+
+.img {
+    min-height: 30vh;
+    max-height: 300px;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+/* DETAILS */
+.name {
+    font-size: 5vmax;
+}
+
+.bar {
+    background: linear-gradient(to left, #f7ba2b 0%, #ea5358 100%);
+    background-clip: content-box;
+    border-radius: 20px;
+    height: 20px;
+    margin: 5vh 0;
+}
+
+
+/* GENDERS */
+.genders {
+    display: flex;
+    align-items: center;
+    font-size: 3em;
+}
+
+
+/* INTERESTS */
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    width: 100%;
+}
+
+.menuContainer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+/* CALENDAR */
+.buttonContainer {
+    display: flex;
+    gap: 1.5em;
+}
+
+.button {
+    background: linear-gradient(to left, #f7ba2b 0%, #ea5358 100%);
+    color: white;
+    min-width: 100px;
+}
