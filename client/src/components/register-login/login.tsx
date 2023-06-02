@@ -26,7 +26,7 @@ export default function LoginPage() {
       if (response.status === 200) {
         console.log(data.message); // Success message
         localStorage.setItem('token', data.token);
-        navigate('/profilePage');
+        navigate('/profile');
       } else if (response.status === 400) {
         console.error(data.error); // Error message
       }

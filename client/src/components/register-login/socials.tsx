@@ -33,7 +33,7 @@ const Socials: React.FC = () => {
 
       if (response.ok) {
         console.log(data.message); // Success message
-        navigate("/profilePage");
+        navigate("/profile");
       } else {
         console.error(data.error); // Error message
       }
