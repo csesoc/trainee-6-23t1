@@ -50,53 +50,55 @@ const GenderPage: React.FC = () => {
   };
 
   return (
-    <section id="container">
-      <section id="content">
-        <h2>What is your gender?</h2>
-        <form onSubmit={handleSubmit}>
-          <label className="radio-label">
-            <input
-              type="radio"
-              name="gender"
-              value="male"
-              checked={selectedGender === 'male'}
-              onChange={handleRadioChange}
-              className="radio-input"
-            />
-            Male
-          </label>
-          <label className="radio-label">
-            <input
-              type="radio"
-              name="gender"
-              value="female"
-              checked={selectedGender === 'female'}
-              onChange={handleRadioChange}
-              className="radio-input"
-            />
-            Female
-          </label>
-          <label className="radio-label">
-            <input
-              type="radio"
-              name="gender"
-              value="nonBinary"
-              checked={selectedGender === 'nonBinary'}
-              onChange={handleRadioChange}
-              className="radio-input"
-            />
-            Non-Binary
-          </label>
-          <br />
-          <br />
-          <div className="button-container-only">
-            <div className="next-button-only">
-              <button type="submit">Next</button>
+    <div className='background'>
+      <section id="container">
+        <section id="content">
+          <h2>What is your gender?</h2>
+          <form onSubmit={handleSubmit}>
+            <label className="radio-label">
+              <input
+                type="radio"
+                name="gender"
+                value="male"
+                checked={selectedGender === 'male'}
+                onChange={handleRadioChange}
+                className="radio-input"
+              />
+              Male
+            </label>
+            <label className="radio-label">
+              <input
+                type="radio"
+                name="gender"
+                value="female"
+                checked={selectedGender === 'female'}
+                onChange={handleRadioChange}
+                className="radio-input"
+              />
+              Female
+            </label>
+            <label className="radio-label">
+              <input
+                type="radio"
+                name="gender"
+                value="nonBinary"
+                checked={selectedGender === 'nonBinary'}
+                onChange={handleRadioChange}
+                className="radio-input"
+              />
+              Non-Binary
+            </label>
+            <br />
+            <br />
+            <div className="button-container-only">
+              <div className="next-button-only">
+                <button type="submit">Next</button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </section>
       </section>
-    </section>
+    </div>
   );
 };
 

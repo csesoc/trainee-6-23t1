@@ -56,57 +56,59 @@ const PrefPage: React.FC = () => {
   };
 
   return (
-    <section id="container">
-      <section id="content">
-        <h2>What are your preferred gender(s)?</h2>
-        <form onSubmit={handleSubmit}>
-          <label className="checkbox-label">
-            <input
-              type="checkbox"
-              name="preferredGenders"
-              value="male"
-              checked={preferredGenders.includes('male')}
-              onChange={handleCheckboxChange}
-              className="checkbox-input"
-            />
-            Male
-          </label>
-          <label className="checkbox-label">
-            <input
-              type="checkbox"
-              name="preferredGenders"
-              value="female"
-              checked={preferredGenders.includes('female')}
-              onChange={handleCheckboxChange}
-              className="checkbox-input"
-            />
-            Female
-          </label>
-          <label className="checkbox-label">
-            <input
-              type="checkbox"
-              name="preferredGenders"
-              value="nonBinary"
-              checked={preferredGenders.includes('nonBinary')}
-              onChange={handleCheckboxChange}
-              className="checkbox-input"
-            />
-            Non-Binary
-          </label>
-          <br />
-          <div className="button-container">
-            <div className="back-button">
-              <button type="button" onClick={handleBack}>
-                Back
-              </button>
+    <div className='background'>
+      <section id="container">
+        <section id="content">
+          <h2>What are your preferred gender(s)?</h2>
+          <form onSubmit={handleSubmit}>
+            <label className="checkbox-label">
+              <input
+                type="checkbox"
+                name="preferredGenders"
+                value="male"
+                checked={preferredGenders.includes('male')}
+                onChange={handleCheckboxChange}
+                className="checkbox-input"
+              />
+              Male
+            </label>
+            <label className="checkbox-label">
+              <input
+                type="checkbox"
+                name="preferredGenders"
+                value="female"
+                checked={preferredGenders.includes('female')}
+                onChange={handleCheckboxChange}
+                className="checkbox-input"
+              />
+              Female
+            </label>
+            <label className="checkbox-label">
+              <input
+                type="checkbox"
+                name="preferredGenders"
+                value="nonBinary"
+                checked={preferredGenders.includes('nonBinary')}
+                onChange={handleCheckboxChange}
+                className="checkbox-input"
+              />
+              Non-Binary
+            </label>
+            <br />
+            <div className="button-container">
+              <div className="back-button">
+                <button type="button" onClick={handleBack}>
+                  Back
+                </button>
+              </div>
+              <div className="next-button">
+                <button type="submit">Next</button>
+              </div>
             </div>
-            <div className="next-button">
-              <button type="submit">Next</button>
-            </div>
-          </div>
-        </form>
+          </form>
+        </section>
       </section>
-    </section>
+    </div>
   );
 };
 

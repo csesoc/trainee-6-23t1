@@ -1,18 +1,16 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { Link, BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './landing.css'
-import App from './App'
 
-function Landing() {
+export default function LandingPage() {
   const navigate = useNavigate();
   return (
     <React.Fragment>
     <div className="headerBarDiv">
       <a href="https://www.youtube.com/watch?v=-ZGlaAxB7nI" className="homeLink">Home</a>
       / COMP6969 - Rizzing Fundamentals
-      <button className="registerButton" onClick={() => navigate("/components/register-login/register")}>Register</button>
-      <button className="loginButton" onClick={() => {alert('login')}}>Login</button>
+      <button className="registerButton" onClick={() => navigate("/register")}>Register</button>
+      <button className="loginButton" onClick={() => navigate("/login")}>Login</button>
     </div>
 
     <div className="headerDiv">
@@ -122,10 +120,3 @@ function Landing() {
     </React.Fragment>
   )
 }
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <Router>
-      <Landing />
-    </Router>
-</React.StrictMode>,
-)

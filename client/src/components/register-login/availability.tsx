@@ -77,48 +77,50 @@ const AvailabilityPage: React.FC = () => {
   };
 
   return (
-    <section id="container">
-      <section id="content">
-        <h2>When are you available?</h2>
-        <form onSubmit={handleSubmit}>
-          <table className="availability-table">
-            <tbody>
-              {Object.entries(availabilities).map(([day, values]) => (
-                <tr key={day} className="availability-row">
-                  <td>{day}</td>
-                  <td>
-                    <Select
-                      name={day}
-                      isMulti
-                      value={values.map((value: number) => ({ label: `${value}:00 - ${value + 1}:00`, value }))}
-                      onChange={handleChange}
-                      options={timeOptions}
-                      menuPlacement="auto"
-                      closeMenuOnSelect={false}
-                      hideSelectedOptions
-                      isSearchable={false}
-                      controlShouldRenderValue={false}
-                      isClearable={false}
-                      backspaceRemovesValue={false}
-                      className="select-container"
-                    />
-                  </td>
-                  <td>
-                    <button type="button" onClick={() => handleReset(day)}>Reset</button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <div className="button-container">
-            <button type="button" onClick={handleBack}>
-              Back
-            </button>
-            <button type="submit">Next</button>
-          </div>
-        </form>
+    <div className="background">
+      <section id="container">
+        <section id="content">
+          <h2>When are you available?</h2>
+          <form onSubmit={handleSubmit}>
+            <table className="availability-table">
+              <tbody>
+                {Object.entries(availabilities).map(([day, values]) => (
+                  <tr key={day} className="availability-row">
+                    <td>{day}</td>
+                    <td>
+                      <Select
+                        name={day}
+                        isMulti
+                        value={values.map((value: number) => ({ label: `${value}:00 - ${value + 1}:00`, value }))}
+                        onChange={handleChange}
+                        options={timeOptions}
+                        menuPlacement="auto"
+                        closeMenuOnSelect={false}
+                        hideSelectedOptions
+                        isSearchable={false}
+                        controlShouldRenderValue={false}
+                        isClearable={false}
+                        backspaceRemovesValue={false}
+                        className="select-container"
+                      />
+                    </td>
+                    <td>
+                      <button type="button" onClick={() => handleReset(day)}>Reset</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div className="button-container">
+              <button type="button" onClick={handleBack}>
+                Back
+              </button>
+              <button type="submit">Next</button>
+            </div>
+          </form>
+        </section>
       </section>
-    </section>
+    </div>
   );
 };
 

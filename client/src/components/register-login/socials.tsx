@@ -47,68 +47,70 @@ const Socials: React.FC = () => {
   };
 
   return (
-    <section id="container">
-      <section id="content">
-        <h2>What are your socials?</h2>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Phone:
+    <div className='background'>
+      <section id="container">
+        <section id="content">
+          <h2>What are your socials?</h2>
+          <form onSubmit={handleSubmit}>
+            <label>
+              Phone:
+              <br />
+              <input
+                type="text"
+                name="phone"
+                value={socials.phone}
+                onChange={handleChange}
+              />
+            </label>
             <br />
-            <input
-              type="text"
-              name="phone"
-              value={socials.phone}
-              onChange={handleChange}
-            />
-          </label>
-          <br />
-          <label>
-            Instagram:
+            <label>
+              Instagram:
+              <br />
+              <input
+                type="text"
+                name="instagram"
+                value={socials.instagram}
+                onChange={handleChange}
+              />
+            </label>
             <br />
-            <input
-              type="text"
-              name="instagram"
-              value={socials.instagram}
-              onChange={handleChange}
-            />
-          </label>
-          <br />
-          <label>
-            Facebook:
+            <label>
+              Facebook:
+              <br />
+              <input
+                type="text"
+                name="facebook"
+                value={socials.facebook}
+                onChange={handleChange}
+              />
+            </label>
             <br />
-            <input
-              type="text"
-              name="facebook"
-              value={socials.facebook}
-              onChange={handleChange}
-            />
-          </label>
-          <br />
-          <label>
-            Discord:
+            <label>
+              Discord:
+              <br />
+              <input
+                type="text"
+                name="discord"
+                value={socials.discord}
+                onChange={handleChange}
+              />
+            </label>
             <br />
-            <input
-              type="text"
-              name="discord"
-              value={socials.discord}
-              onChange={handleChange}
-            />
-          </label>
-          <br />
-          <br />
-          <div className="button-container">
-            <div className="back-button">
-              <button type="button" onClick={handleBack}>
-                Back
-              </button>
+            <br />
+            <div className="button-container">
+              <div className="back-button">
+                <button type="button" onClick={handleBack}>
+                  Back
+                </button>
+              </div>
+              <div className="next-button">
+                <button type="submit">Save</button>
+              </div>
             </div>
-            <div className="next-button">
-              <button type="submit">Save</button>
-            </div>
-          </div>
-        </form>
+          </form>
+        </section>
       </section>
-    </section>
+    </div>
   );
 };
 

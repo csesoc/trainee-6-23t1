@@ -1,4 +1,5 @@
 import React from 'react';
+import LandingPage from './components/landing/landing';
 import RegisterPage from './components/register-login/register';
 import LoginPage from './components/register-login/login';
 import InterestPage from './components/register-login/interests';
@@ -12,6 +13,7 @@ function App(): JSX.Element {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<LandingPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/gender" element={<GenderPage />} />

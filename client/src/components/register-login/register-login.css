@@ -1,7 +1,8 @@
-body {
-  background-image: url(../../assets/sheep_wallpaper.jpeg);
+.background {
+  background-image: url(sheep_wallpaper.jpeg);
   color: #080500;
   justify-content: center;
+  height: 100%;
 }
 
 #container {

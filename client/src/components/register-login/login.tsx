@@ -36,6 +36,7 @@ export default function LoginPage() {
   };
 
   return (
+    <div className="background">
       <section id="container">
         <section id="content">
           <h1>Sign in</h1>
@@ -74,5 +75,6 @@ export default function LoginPage() {
           </form>
         </section>
       </section>
+    </div>
   );
 }

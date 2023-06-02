@@ -54,68 +54,70 @@ const RegistrationPage: React.FC = () => {
   };
 
   return (
-    <section id="container">
-      <section id="content">
-        <h1>Enroll Now!</h1>
-        <form onSubmit={handleSubmit}>
-          <label>
-            First Name:
+    <div className="background">
+      <section id="container">
+        <section id="content">
+          <h1>Enroll Now!</h1>
+          <form onSubmit={handleSubmit}>
+            <label>
+              First Name:
+              <br />
+              <input
+                type="text"
+                name="firstName"
+                value={formValues.firstName}
+                onChange={handleInputChange}
+                required
+              />
+            </label>
             <br />
-            <input
-              type="text"
-              name="firstName"
-              value={formValues.firstName}
-              onChange={handleInputChange}
-              required
-            />
-          </label>
-          <br />
-          <label>
-            Last Name:
+            <label>
+              Last Name:
+              <br />
+              <input
+                type="text"
+                name="lastName"
+                value={formValues.lastName}
+                onChange={handleInputChange}
+                required
+              />
+            </label>
             <br />
-            <input
-              type="text"
-              name="lastName"
-              value={formValues.lastName}
-              onChange={handleInputChange}
-              required
-            />
-          </label>
-          <br />
-          <label>
-            Email:
+            <label>
+              Email:
+              <br />
+              <input
+                type="email"
+                name="email"
+                value={formValues.email}
+                onChange={handleInputChange}
+                required
+              />
+            </label>
             <br />
-            <input
-              type="email"
-              name="email"
-              value={formValues.email}
-              onChange={handleInputChange}
-              required
-            />
-          </label>
-          <br />
-          <label>
-            Password:
+            <label>
+              Password:
+              <br />
+              <input
+                type="password"
+                name="password"
+                value={formValues.password}
+                onChange={handleInputChange}
+                required
+              />
+            </label>
             <br />
-            <input
-              type="password"
-              name="password"
-              value={formValues.password}
-              onChange={handleInputChange}
-              required
-            />
-          </label>
-          <br />
-          <br />
-          <button type="submit">Register</button>
-          <br />
-          <br />
-          <label>
-            <a href="/login">Already enrolled?</a>
-          </label>
-        </form>
+            <br />
+            <button type="submit">Register</button>
+            <br />
+            <br />
+            <label>
+              <a href="/login">Already enrolled?</a>
+            </label>
+          </form>
+        </section>
       </section>
-    </section>
+    </div>
   );
 };
 
