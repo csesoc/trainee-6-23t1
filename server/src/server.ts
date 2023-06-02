@@ -23,7 +23,7 @@ app.use("/auth", authRoute);
 app.use("/profile", profileRoute);
 
 // start server
-const PORT = 5000;
+const PORT = 5005;
 
 app.listen(PORT, async () => {
     await client.connect(); // connect to mongo

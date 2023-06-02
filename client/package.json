@@ -19,12 +19,19 @@
     "@fullcalendar/react": "^6.1.7",
     "@fullcalendar/timegrid": "^6.1.7",
     "@mui/material": "^5.13.0",
+    "react-icons": "^4.8.0",
     "react": "^18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.8.0"
+    "react-dotenv": "^0.1.3",
+    "react-router-dom": "^6.11.2",
+    "react-select": "^5.7.3"
   },
   "devDependencies": {
+    "@types/mongodb": "^4.0.7",
+    "@types/node": "^20.2.5",
     "@types/react": "^18.0.27",
+    "@types/react-beautiful-dnd": "^13.1.4",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
     "typescript": "^4.9.3",

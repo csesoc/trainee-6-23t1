@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material'
 import Pic from '../../../public/ai.jpg'
 import styles from './Profile.module.css'
-import TryhardCard from '../tryhard/TryhardCard'
+import TryhardCard from './tryhard/TryhardCard'
 
 const Img = () => {
 
