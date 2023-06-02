@@ -12,27 +12,6 @@ const Profile = () => {
   const [reset, setReset] = useState(0)
   const [save, setSave] = useState(0)
 
-  const email = 'theo.ang816@gmail.com'
-  const password = 'testPassword'
-
-  useEffect(() => {
-    const login = async () => {
-      const response = await fetch(import.meta.env.VITE_BACKEND_URL + '/auth/login', {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          password
-        }),
-        credentials: 'include',
-      });
-      const data = await response.json();
-    }
-    login()
-  }, [])
-
   return (
     <>
       <div className={styles.options}>
