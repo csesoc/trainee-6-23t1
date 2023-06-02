@@ -7,6 +7,8 @@ import { validateToken } from "../middleware/validateToken";
 const router = express.Router();
 router.use(validateToken);
 
+////////////////////////////// SETTERS //////////////////////////////
+
 /*
 Updates interests fields to the database with params: 
 {
@@ -244,5 +246,62 @@ router.post("/availabilities", async (req, res) => {
   
   return res.status(200).send({ message: `Availabilities have been updated!` });
 });
+
+
+////////////////////////////// GETTERS //////////////////////////////
+router.get("/user", async (req, res) => {
+  const token = req.cookies.jwt;
+  const user = await profile.findOne({ token: token });
+  if (!user) {
+      return res.status(400).send({ error: "token invalid" });
+  }
+  return res.status(200).send(user)
+})
+
+router.get("/interests", async (req, res) => {
+  const token = req.cookies.jwt;
+  const user = await profile.findOne({ token: token });
+  if (!user) {
+      return res.status(400).send({ error: "token invalid" });
+  }
+  return res.status(200).send(user.interests)
+})
+
+router.get("/genders", async (req, res) => {
+  const token = req.cookies.jwt;
+  const user = await profile.findOne({ token: token });
+  if (!user) {
+      return res.status(400).send({ error: "token invalid" });
+  }
+  return res.status(200).send(user.genders)
+})
+
+router.get("/preferences", async (req, res) => {
+  const token = req.cookies.jwt;
+  const user = await profile.findOne({ token: token });
+  if (!user) {
+      return res.status(400).send({ error: "token invalid" });
+  }
+  return res.status(200).send(user.preferences)
+})
+
+router.get("/socials", async (req, res) => {
+  const token = req.cookies.jwt;
+  const user = await profile.findOne({ token: token });
+  if (!user) {
+      return res.status(400).send({ error: "token invalid" });
+  }
+  return res.status(200).send(user.socials)
+})
+
+router.get("/availabilities", async (req, res) => {
+  const token = req.cookies.jwt;
+  const user = await profile.findOne({ token: token });
+  if (!user) {
+      return res.status(400).send({ error: "token invalid" });
+  }
+  return res.status(200).send(user.availabilities)
+})
+
 
 export { router as default };
