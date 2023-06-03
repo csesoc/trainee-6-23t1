@@ -33,8 +33,8 @@ export default function LandingPage() {
         <Avatar src={Pic} onClick={() => navigate('/profile')} className="profileIcon"/>
       :
         <>
-        <button className="registerButton" onClick={() => navigate("/register")}>Register</button>
-        <button className="loginButton" onClick={() => navigate("/login")}>Login</button>
+        <button className="registerButton buttonLanding" onClick={() => navigate("/register")}>Register</button>
+        <button className="loginButton buttonLanding" onClick={() => navigate("/login")}>Login</button>
         </>
       }
     </div>
@@ -69,9 +69,9 @@ export default function LandingPage() {
             The goal of the course is to expose students to:
             <br></br>
             <br></br>
-            <li>high level rizzing</li>
-            <li>absolutely incredible amounts of rizzing</li>
-            <li>rizzing so strong it can trespass into the domain of the gods</li>
+            <li className="liLanding">high level rizzing</li>
+            <li className="liLanding">absolutely incredible amounts of rizzing</li>
+            <li className="liLanding">rizzing so strong it can trespass into the domain of the gods</li>
             <br></br>
             <br></br>
             <b>Topics:</b> <br></br>

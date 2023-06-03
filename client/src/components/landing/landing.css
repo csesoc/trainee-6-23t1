@@ -79,7 +79,6 @@
 	border-radius: 30px;
 	margin-right: 16px;
 	margin-left: 16px;
-	width: 72px;
 
 }
 .loginButton {
@@ -89,14 +88,14 @@
 	float: right;
 
 }
-button {
+.buttonLanding {
 	display: flex;
     align-items: center;
     justify-content: center;
     color:rgba(0, 0, 0, 0.87);
     font-weight: bold;
     height: 25px;
-    width: 60px;
+    width: 70px;
     overflow: hidden;
     text-decoration: none;
     transition: .2s transform ease-in-out;
@@ -106,7 +105,7 @@ button {
 	border: 1px solid transparent;
 
 }
-button::after {
+.buttonLanding::after {
     background-color: #ffbf69;
     content: '';
     display: block;
@@ -122,10 +121,10 @@ button::after {
     will-change: transform;
     z-index: -1;
     }
-button:hover::after {
+.buttonLanding:hover::after {
     transform: translate(0, 0);
 }
-button:hover {
+.buttonLanding:hover {
     border: 2px solid transparent;
     color: #004c99;
     transform: scale(1.05);
@@ -208,32 +207,25 @@ button:hover {
 .flexLeft > div > a:hover {
 	background-color: #f0f0f0;
 }
-li {
+.liLanding {
 	padding-left: 20px;
 }
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
+    font-weight: 500;
+    color: #646cff;
+    text-decoration: inherit;
+  }
 a:hover {
-  color: #535bf2;
+    color: #535bf2;
 }
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
+  
 h1 {
   font-size: 40px;
   line-height: 1.1;
 }
 
 html, body {
+    margin: 0;
     max-width: 100%;
     overflow-x: hidden;
 	scroll-behavior: smooth;
