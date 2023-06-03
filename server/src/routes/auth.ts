@@ -63,7 +63,7 @@ router.post("/register", async (req, res) => {
       maxAge: 24 * 60 * 60 * 1000,
       httpOnly: true,
       sameSite: "none",
-      secure: false,
+      secure: true,
     });
 
     return res.status(200).send({ message: `${email} has been successfully registered!` });
@@ -123,7 +123,7 @@ router.post("/login", async (req, res) => {
       maxAge: 24 * 60 * 60 * 1000,
       httpOnly: true,
       sameSite: "none",
-      secure: false,
+      secure: true,
     });
 
     return res.status(200).send({ message: `${email} has been logged in!` });
