@@ -23,7 +23,7 @@ const validateToken = async (req: Request, res: Response, next: NextFunction) =>
   if (process.env.TOKEN_KEY != undefined) {
     jwt.verify(token, process.env.TOKEN_KEY, (err: any, decoded: any) => {
       if (err) {
-        return res.status(401).send({ error: "Invalid token" });
+        return res.status(401).send({ error: err });
       }
       console.log("Token is valid!");
       next();

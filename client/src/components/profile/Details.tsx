@@ -25,7 +25,7 @@ const Details = ({ save, reset, edit, setEdit }: detailsProps) => {
         credentials: 'include',
       });
       const data = await user.json()
-      setName(data.firstName)
+      setName(`${data.firstName} ${data.lastName}`)
     }
     fetchData()
   }, [])

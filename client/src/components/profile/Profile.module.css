@@ -13,17 +13,29 @@
 /* OPTIONS */
 .options {
     position: fixed;
-    top: 5px;
-    right: 5px;
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
     font-size: 2em;
 
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
     z-index: 5;
+}
+
+.rightOptions {
+    display: flex;
+    gap: 10px;
 }
 
 .icon {
     cursor: pointer;
+}
+
+.menuItem {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
 }
 
 
@@ -38,7 +50,7 @@
 
 .img {
     min-height: 30vh;
-    max-height: 300px;
+    height: 100%;
     width: 100%;
     object-fit: cover;
 }

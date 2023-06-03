@@ -162,4 +162,17 @@ router.delete("/logout", async (req, res) => {
   return res.status(200).send({ message: `Successfully logged out`});
 });
 
+router.get("/loginStatus", async (req, res) => {
+  const token = req.cookies?.jwt;
+  if (!token) return res.status(200).send({ status: false }); // no cookie
+
+  let user = profile.findOne({ token: token });
+  if (!user) return res.status(200).send({ status: false });  // no matching token (forbidden)
+
+  jwt.verify(token, process.env.TOKEN_KEY!, (err: any, decoded: any) => {
+    if (err) return res.status(200).send({ status: false });  // token expired
+    return res.status(200).send({ status: true });
+  })
+})
+
 export { router as default };

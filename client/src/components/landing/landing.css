@@ -16,7 +16,10 @@
     padding: 0 12vw;
     font-size: 15px;
     align-items: center;
-    
+    gap: 5px;
+}
+.profileIcon {
+    cursor: pointer;
 }
 .homeLink {
     color: #004c99;

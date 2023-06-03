@@ -262,7 +262,7 @@ router.get("/interests", async (req, res) => {
   const token = req.cookies.jwt;
   const user = await profile.findOne({ token: token });
   if (!user) {
-      return res.status(400).send({ error: "token invalid" });
+    return res.status(400).send({ error: "token invalid" });
   }
   return res.status(200).send(user.interests)
 })

@@ -1,16 +1,42 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './landing.css'
+import { Avatar } from '@mui/material';
+import Pic from '../../assets/sheep_icon.webp'
 
 export default function LandingPage() {
+
   const navigate = useNavigate();
+  const [loggedIn, setLoggedIn] = useState(true)
+
+  useEffect(() => {
+    const getLoginStatus = async () => {
+      const user: any = await fetch(import.meta.env.VITE_BACKEND_URL + '/auth/loginStatus', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      });
+      const data = await user.json()
+      setLoggedIn(data.status)
+    }
+    getLoginStatus()
+  }, [])
+
   return (
     <React.Fragment>
     <div className="headerBarDiv">
       <a href="https://www.youtube.com/watch?v=-ZGlaAxB7nI" className="homeLink">Home</a>
       / COMP6969 - Rizzing Fundamentals
-      <button className="registerButton" onClick={() => navigate("/register")}>Register</button>
-      <button className="loginButton" onClick={() => navigate("/login")}>Login</button>
+      { loggedIn ? 
+        <Avatar src={Pic} onClick={() => navigate('/profile')} className="profileIcon"/>
+      :
+        <>
+        <button className="registerButton" onClick={() => navigate("/register")}>Register</button>
+        <button className="loginButton" onClick={() => navigate("/login")}>Login</button>
+        </>
+      }
     </div>
 
     <div className="headerDiv">

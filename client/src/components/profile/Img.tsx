@@ -1,5 +1,5 @@
 import { Grid } from '@mui/material'
-import Pic from './ai.jpg'
+import Pic from '../register-login/sheep_wallpaper.jpeg'
 import styles from './Profile.module.css'
 import TryhardCard from './tryhard/TryhardCard'
 
