@@ -7,7 +7,7 @@
     display: flex;
 	justify-content: flex-start;
     background-color: #FFFFFF;
-    color: #a0a0aa;
+    color: rgba(0, 0, 0, 0.87);
     position: absolute;
     top: 0px;
     height: 40px;

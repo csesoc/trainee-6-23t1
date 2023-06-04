@@ -4,6 +4,10 @@ import './landing.css'
 import { Avatar } from '@mui/material';
 import Pic from '../../assets/sheep_icon.webp'
 
+import { Widget, addResponseMessage } from 'react-chat-widget';
+
+import 'react-chat-widget/lib/styles.css';
+
 export default function LandingPage() {
 
   const navigate = useNavigate();
@@ -99,6 +103,10 @@ export default function LandingPage() {
             <b>3)</b> 5 minutes to chat 1v1 <br></br>
             <b>4)</b> the algorizzm™ will determine your compatability <br></br>
             <b>5)</b> maybe get sent each others socials?? ღゝ◡╹ )ノ♡
+            <br></br>
+            <br></br>
+            actually nvm some things were just not meant to be &#60;/3 just get sent socials
+            rip
           </p>
         </div>
       </div>

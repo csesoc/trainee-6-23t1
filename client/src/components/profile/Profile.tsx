@@ -103,7 +103,7 @@ const Profile = () => {
           </Menu>
         </div>
       </div>
-
+      
       {/* DATA */}
       <Grid container className={styles.container} spacing={5}>
         <Img/>
