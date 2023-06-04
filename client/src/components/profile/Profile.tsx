@@ -69,6 +69,7 @@ const Profile = () => {
     navigate('/')
   }
 
+
   return (
     <>
       {/* TOPBAR  */}

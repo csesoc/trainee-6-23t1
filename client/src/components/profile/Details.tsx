@@ -3,6 +3,7 @@ import styles from './Profile.module.css'
 import Genders from './Genders'
 import Interests from './Interests'
 import { useEffect, useState } from 'react'
+import Socials from './Socials'
 
 interface detailsProps {
   save: number,
@@ -37,6 +38,7 @@ const Details = ({ save, reset, edit, setEdit }: detailsProps) => {
         <Grid item xs={12}>
           <span className={styles.name}>{name}</span>
         </Grid>
+        <Socials save={save} reset={reset} edit={edit}/>
         <Grid item xs={12}><div className={styles.bar}/></Grid>
         <Genders save={save} reset={reset} edit={edit}/>
         <Interests save={save} reset={reset} edit={edit}/>
